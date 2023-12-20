@@ -1,0 +1,60 @@
+<config-description:config-descriptions
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:config-description="https://openhab.org/schemas/config-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/config-description/v1.0.0 https://openhab.org/schemas/config-description-1.0.0.xsd">
+
+	<config-description uri="thing-type:veluxactive:account">
+		<parameter name="username" type="text" required="true">
+			<label>Username</label>
+			<description>Enter your Velux account username (email)</description>
+		</parameter>
+		<parameter name="password" type="text" required="true">
+			<label>Password</label>
+			<description>Enter your Velux account password</description>
+			<context>password</context>
+		</parameter>
+		<parameter name="clientId" type="text" required="true">
+			<label>Client ID</label>
+			<description>Velux App Client ID (google it...)</description>
+			<context>password</context>
+		</parameter>
+		<parameter name="clientSecret" type="text" required="true">
+			<label>Client Secret</label>
+			<description>Velux App Client Secret (google it...)</description>
+			<context>password</context>
+		</parameter>
+		<parameter name="refreshIntervalNormal" type="integer" min="2" required="false" unit="s">
+			<label>Refresh Interval (Normal)</label>
+			<description>Specifies the refresh interval in seconds</description>
+			<default>30</default>
+		</parameter>
+		<parameter name="refreshIntervalQuick" type="integer" min="2" required="false" unit="s">
+			<label>Refresh Interval (Quick)</label>
+			<description>Specifies time in seconds to wait after successful update, command or action before refresh</description>
+			<default>5</default>
+		</parameter>
+		<parameter name="apiTimeout" type="integer" min="2" required="false" unit="s">
+			<label>API Timeout</label>
+			<description>Time in seconds to allow API request to complete</description>
+			<default>22</default>
+		</parameter>
+		<parameter name="discoveryEnabled" type="boolean" required="false">
+			<label>Discovery Enabled</label>
+			<description>Enable/disable automatic discovery</description>
+			<default>true</default>
+		</parameter>
+	</config-description>
+
+	<config-description uri="thing-type:veluxactive:gateway">
+		<parameter name="gatewayId" type="text" required="true">
+			<label>Gateway ID</label>
+		</parameter>
+	</config-description>
+
+	<config-description uri="thing-type:veluxactive:blind">
+		<parameter name="blindId" type="text" required="true">
+			<label>Blind ID</label>
+		</parameter>
+	</config-description>
+
+</config-description:config-descriptions>

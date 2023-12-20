@@ -200,6 +200,8 @@ public class NetatmoConstants {
         ACCESS_DOORBELL,
         @SerializedName("read_carbonmonoxidedetector")
         READ_CARBONMONOXIDEDETECTOR,
+        @SerializedName("all_scopes")
+        ALL,
         UNKNOWN
     }
 

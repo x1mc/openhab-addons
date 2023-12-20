@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="veluxactive"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<!-- BRIDGE TYPE ACCOUNT -->
+	<bridge-type id="account">
+		<label>Velux Active Account</label>
+		<description>Velux Active account used to access device control</description>
+		<config-description-ref uri="thing-type:veluxactive:account"/>
+	</bridge-type>
+
+	<!-- BRIDGE TYPE GATEWAY -->
+	<bridge-type id="gateway">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="account"/>
+		</supported-bridge-type-refs>
+		<label>Velux Active Gateway</label>
+		<description>Velux Active gateway used to connect devices to the internet</description>
+		<channels>
+			<channel id="is_raining" typeId="isRaining"/>
+		</channels>
+		<representation-property>uniqueId</representation-property>
+		<config-description-ref uri="thing-type:veluxactive:gateway"/>
+	</bridge-type>
+
+	<channel-type id="isRaining">
+		<item-type>Switch</item-type>
+		<label>Raining</label>
+		<category>Rain</category>
+		<state readOnly="true"/>
+	</channel-type>
+
+	<!-- THING TYPE BLIND -->
+	<thing-type id="blind">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="gateway"/>
+		</supported-bridge-type-refs>
+		<label>Velux Blind</label>
+		<description>Remote controlled skylight blind</description>
+		<category>Blinds</category>
+		<channels>
+			<channel id="battery_state" typeId="batteryState"/>
+			<channel id="shutter_position" typeId="shutterPosition"/>
+			<channel id="reachable" typeId="reachable"/>
+		</channels>
+		<representation-property>uniqueId</representation-property>
+		<config-description-ref uri="thing-type:veluxactive:blind"/>
+	</thing-type>
+
+	<channel-type id="batteryState">
+		<item-type>String</item-type>
+		<label>Battery State</label>
+		<category>BatteryLevel</category>
+		<state readOnly="true" pattern="%s"/>
+	</channel-type>
+	<channel-type id="shutterPosition">
+		<item-type>Rollershutter</item-type>
+		<label>Shutter Position</label>
+		<category>Rollershutter</category>
+	</channel-type>
+	<channel-type id="reachable" advanced="true">
+		<item-type>String</item-type>
+		<label>Reachable</label>
+		<state readOnly="true" pattern="%s"/>
+	</channel-type>
+</thing:thing-descriptions>
